@@ -45,13 +45,19 @@ async def main():
         # Inject CSS to unscale posts AND unclip parents that were using overflow:hidden
         await page.add_style_tag(content="""
             body{padding:0 !important}
-            .topbar,.sub,.note,.controls,.cap-panel,.card-wrap .head{display:none !important}
+            body > .topbar, body > .sub, body > .note, body > .controls{display:none !important}
+            .card-wrap > .head{display:none !important}
+            .card-wrap > .cap-panel{display:none !important}
             .grid{display:block !important;gap:80px !important}
             .card-wrap{overflow:visible !important;padding:0 !important;border:none !important;background:transparent !important;border-radius:0 !important;margin:0 0 80px 0 !important}
             .post{width:1080px !important;height:1350px !important;overflow:hidden !important;box-shadow:none !important;margin:0 !important;border-radius:0 !important}
             .scale{transform:scale(1) !important;width:1080px !important;height:1350px !important;transform-origin:top left !important}
         """)
-        await page.wait_for_timeout(1500)
+        # CRITICAL: wait for ALL web fonts to load before screenshotting.
+        # Without this, text renders in Times New Roman fallback -> layout shifts.
+        await page.evaluate("document.fonts.ready")
+        await page.wait_for_function("document.fonts.status === 'loaded'")
+        await page.wait_for_timeout(2500)
 
         for n, name in TITLES.items():
             el = page.locator(f"#p{n}")

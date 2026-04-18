@@ -58,7 +58,8 @@ h1 em{font-style:italic;color:var(--gold)}
 /* ============ DESIGN 1: Tweet — porcelain + sage halo ============ */
 .d1{background:var(--porcelain);color:var(--ink);padding:70px;display:flex;flex-direction:column;position:relative}
 .d1::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-deep) 50%,var(--oxblood) 100%)}
-.d1 .head{display:flex;align-items:center;gap:24px;margin-bottom:90px;margin-top:30px}
+.d1 .head{display:flex;align-items:center;gap:24px;margin-bottom:80px;margin-top:30px;justify-content:flex-start}
+.d1 .head > div:last-child{flex:0 1 auto}
 .d1 .avatar{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,var(--forest) 0%,#061d16 70%);padding:7px;box-shadow:0 0 35px #0f513244,0 0 0 2px var(--gold) inset}
 .d1 .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;filter:grayscale(.9) contrast(1.1)}
 .d1 .name{font-family:'Playfair Display',serif;font-size:46px;font-weight:900;display:flex;align-items:center;gap:14px;color:var(--ink)}
@@ -75,7 +76,7 @@ h1 em{font-style:italic;color:var(--gold)}
 .d2::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 30%,var(--midnight) 80%)}
 .d2 .kicker{font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:30px;letter-spacing:10px;margin-bottom:50px;z-index:2;position:relative}
 .d2 .kicker::before{content:"◆ ";color:var(--gold)}
-.d2 .txt{font-family:'Playfair Display',serif;font-size:170px;font-weight:900;line-height:.95;color:var(--porcelain);z-index:2;position:relative;letter-spacing:-2px}
+.d2 .txt{font-family:'Playfair Display',serif;font-size:130px;font-weight:900;line-height:1;color:var(--porcelain);z-index:2;position:relative;letter-spacing:-2px}
 .d2 .txt em{font-style:italic;color:var(--gold);font-family:'Cormorant Garamond',serif}
 .d2 .sig{margin-top:70px;font-family:'JetBrains Mono',monospace;color:#7a7265;font-size:26px;z-index:2;position:relative;border-top:1px solid #2a3550;padding-top:24px;display:flex;justify-content:space-between}
 .d2 .sig b{color:var(--gold)}
@@ -87,7 +88,7 @@ h1 em{font-style:italic;color:var(--gold)}
 .d3 .body{flex:1;padding:220px 80px;display:flex;flex-direction:column;justify-content:center;position:relative}
 .d3 .issue{font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--oxblood);margin-bottom:40px;letter-spacing:4px}
 .d3 .issue::before,.d3 .issue::after{content:"◆";margin:0 14px;color:var(--gold)}
-.d3 .txt{font-family:'Playfair Display',serif;font-size:160px;line-height:.98;font-weight:900;color:var(--ink)}
+.d3 .txt{font-family:'Playfair Display',serif;font-size:130px;line-height:1;font-weight:900;color:var(--ink)}
 .d3 .txt em{color:var(--oxblood);font-style:italic}
 .d3 .divider{margin:46px 0;width:120px;height:3px;background:var(--gold)}
 .d3 .kicker{font-family:'JetBrains Mono',monospace;font-size:22px;color:#6a655c;letter-spacing:3px;line-height:1.5}
@@ -137,7 +138,7 @@ h1 em{font-style:italic;color:var(--gold)}
 .d7{background:linear-gradient(135deg,#0a0908 0%,#14110c 100%);color:var(--cream);padding:180px 100px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
 .d7::before{content:"01";position:absolute;top:-60px;right:-30px;font-family:'DM Serif Display',serif;font-size:620px;color:var(--gold);opacity:.05;line-height:1;font-weight:900}
 .d7 .rule{font-family:'JetBrains Mono',monospace;font-size:24px;color:var(--gold);letter-spacing:8px;margin-bottom:60px;position:relative;z-index:1}
-.d7 .txt{font-family:'Playfair Display',serif;font-size:160px;line-height:.98;letter-spacing:-2px;position:relative;z-index:1;color:var(--porcelain);font-weight:900}
+.d7 .txt{font-family:'Playfair Display',serif;font-size:130px;line-height:1.02;letter-spacing:-1px;position:relative;z-index:1;color:var(--porcelain);font-weight:900}
 .d7 .txt em{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif}
 .d7 .bot{display:flex;gap:28px;align-items:center;position:relative;z-index:1;border-top:1px solid #2a241b;padding-top:40px;margin-top:70px}
 .d7 .pfp{width:100px;height:100px;border-radius:50%;background-size:cover !important;background-position:center !important;border:2px solid var(--gold)}
@@ -172,7 +173,7 @@ h1 em{font-style:italic;color:var(--gold)}
 .d10::after{content:"";position:absolute;inset:48px;border:1px solid var(--gold);opacity:.3;pointer-events:none}
 .d10 .crest{text-align:center;color:var(--gold);font-family:'Playfair Display',serif;font-size:24px;letter-spacing:16px;margin-bottom:20px;font-weight:700}
 .d10 .crest::before,.d10 .crest::after{content:"◆";margin:0 26px;color:var(--gold-deep);font-size:18px}
-.d10 .txt{font-family:'DM Serif Display',serif;font-size:150px;line-height:1;color:var(--porcelain);text-align:center;letter-spacing:-2px}
+.d10 .txt{font-family:'DM Serif Display',serif;font-size:120px;line-height:1.05;color:var(--porcelain);text-align:center;letter-spacing:-1px}
 .d10 .txt em{color:var(--gold);font-style:italic}
 .d10 .sig{text-align:center;color:#8a857c;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;border-top:1px solid var(--gold);padding-top:34px;margin-top:20px;letter-spacing:2px}
 .d10 .sig b{color:var(--gold);letter-spacing:6px;font-family:'Playfair Display',serif;font-style:normal}
@@ -210,7 +211,7 @@ h1 em{font-style:italic;color:var(--gold)}
 .d13 .strip{background:linear-gradient(90deg,var(--gold) 0%,var(--gold-deep) 100%);padding:50px 80px;transform:rotate(-1.2deg);margin:70px -40px 0;box-shadow:0 20px 50px #0004;position:relative;z-index:1}
 .d13 .strip .label{font-family:'Playfair Display',serif;font-size:44px;letter-spacing:6px;color:var(--ink);font-weight:900}
 .d13 .body{padding:110px 90px 60px;flex:1;position:relative;z-index:1}
-.d13 .txt{font-family:'Playfair Display',serif;font-size:160px;line-height:1;font-weight:900;color:var(--ink)}
+.d13 .txt{font-family:'Playfair Display',serif;font-size:130px;line-height:1.05;font-weight:900;color:var(--ink)}
 .d13 .txt u{text-decoration:none;background:linear-gradient(180deg,transparent 62%,var(--gold) 62%)}
 .d13 .sign{font-family:'Permanent Marker',cursive;font-size:72px;color:var(--oxblood);transform:rotate(-4deg);margin-top:70px;padding-left:40px}
 
@@ -235,7 +236,7 @@ h1 em{font-style:italic;color:var(--gold)}
 .d15::before{content:"";position:absolute;top:-220px;right:-220px;width:680px;height:680px;background:radial-gradient(circle,var(--gold) 0%,transparent 60%);opacity:.2}
 .d15::after{content:"";position:absolute;inset:40px;border:1px solid var(--gold);opacity:.25;pointer-events:none}
 .d15 .chip{display:inline-block;background:var(--ink);color:var(--gold);padding:16px 30px;font-family:'JetBrains Mono',monospace;font-size:26px;letter-spacing:5px;margin-bottom:60px;align-self:flex-start;border:1px solid var(--gold)}
-.d15 .txt{font-family:'Playfair Display',serif;font-size:210px;line-height:.95;color:var(--porcelain);letter-spacing:-3px;font-weight:900}
+.d15 .txt{font-family:'Playfair Display',serif;font-size:150px;line-height:1;color:var(--porcelain);letter-spacing:-2px;font-weight:900}
 .d15 .txt span{display:inline-block;background:var(--gold);color:var(--ink);padding:0 24px;transform:rotate(-1.5deg);font-style:italic;font-family:'Cormorant Garamond',serif}
 .d15 .foot{display:flex;align-items:center;gap:30px;margin-top:70px;color:var(--gold-light);font-size:30px;font-weight:600;font-family:'JetBrains Mono',monospace;letter-spacing:3px}
 .d15 .foot .circle{width:100px;height:100px;border-radius:50%;background-size:cover !important;background-position:center !important;border:3px solid var(--gold)}
@@ -272,7 +273,7 @@ h1 em{font-style:italic;color:var(--gold)}
 .d18::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#3a3632 0,#3a3632 140px,#2b2826 140px,#2b2826 142px);opacity:.7}
 .d18::after{content:"";position:absolute;inset:0;background-image:radial-gradient(#0006 1px,transparent 1px);background-size:12px 12px;opacity:.5}
 .d18 .tag{position:absolute;top:70px;left:-15px;transform:rotate(-5deg);font-family:'Permanent Marker',cursive;font-size:78px;color:var(--gold);text-shadow:4px 4px 0 #000;padding:20px 40px;z-index:2}
-.d18 .txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-2deg);font-family:'Anton',sans-serif;font-size:230px;color:var(--gold);text-shadow:10px 10px 0 var(--oxblood),14px 14px 0 #000;line-height:.92;text-align:center;width:92%;letter-spacing:2px;z-index:2}
+.d18 .txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-2deg);font-family:'Anton',sans-serif;font-size:170px;color:var(--gold);text-shadow:8px 8px 0 var(--oxblood),12px 12px 0 #000;line-height:.95;text-align:center;width:92%;letter-spacing:2px;z-index:2}
 .d18 .txt span{color:var(--porcelain);-webkit-text-stroke:3px var(--ink);display:inline-block}
 .d18 .splat{position:absolute;bottom:80px;right:80px;width:280px;height:280px;background:var(--oxblood);border-radius:50% 30% 60% 40%;transform:rotate(25deg);opacity:.8}
 .d18 .splat2{position:absolute;top:90px;right:130px;width:120px;height:120px;background:var(--gold);border-radius:60% 40% 50% 50%;transform:rotate(45deg);opacity:.7}
@@ -302,7 +303,7 @@ h1 em{font-style:italic;color:var(--gold)}
 .d20 .bot{background:linear-gradient(135deg,var(--forest),var(--emerald));padding:80px;display:flex;flex-direction:column;justify-content:center;position:relative;color:var(--cream)}
 .d20 .bot::before{content:"";position:absolute;top:-40px;left:0;right:0;height:80px;background:repeating-linear-gradient(-45deg,var(--forest) 0,var(--forest) 20px,var(--ink) 20px,var(--ink) 40px)}
 .d20 .kicker{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;margin-bottom:30px;color:var(--gold);letter-spacing:4px}
-.d20 .txt{font-family:'Playfair Display',serif;font-size:170px;line-height:.95;color:var(--porcelain);letter-spacing:-2px;font-weight:900}
+.d20 .txt{font-family:'Playfair Display',serif;font-size:130px;line-height:1;color:var(--porcelain);letter-spacing:-2px;font-weight:900}
 .d20 .txt u{text-decoration:none;background:var(--gold);color:var(--ink);padding:0 16px;font-style:italic;font-family:'Cormorant Garamond',serif}
 </style>
 </head>
