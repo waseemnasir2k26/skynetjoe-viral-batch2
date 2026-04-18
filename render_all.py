@@ -42,12 +42,16 @@ async def main():
         page = await ctx.new_page()
         await page.goto(HTML.as_uri())
         await page.wait_for_load_state("networkidle")
-        # Inject CSS to unscale all posts to native 1080x1350
+        # Inject CSS to unscale posts AND unclip parents that were using overflow:hidden
         await page.add_style_tag(content="""
-            .post{width:1080px !important;height:1350px !important;overflow:visible !important;box-shadow:none !important;margin:0 !important;border-radius:0 !important}
-            .scale{transform:scale(1) !important;width:1080px !important;height:1350px !important}
+            body{padding:0 !important}
+            .topbar,.sub,.note,.controls,.cap-panel,.card-wrap .head{display:none !important}
+            .grid{display:block !important;gap:80px !important}
+            .card-wrap{overflow:visible !important;padding:0 !important;border:none !important;background:transparent !important;border-radius:0 !important;margin:0 0 80px 0 !important}
+            .post{width:1080px !important;height:1350px !important;overflow:hidden !important;box-shadow:none !important;margin:0 !important;border-radius:0 !important}
+            .scale{transform:scale(1) !important;width:1080px !important;height:1350px !important;transform-origin:top left !important}
         """)
-        await page.wait_for_timeout(1000)
+        await page.wait_for_timeout(1500)
 
         for n, name in TITLES.items():
             el = page.locator(f"#p{n}")
