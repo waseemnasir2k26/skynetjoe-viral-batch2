@@ -214,7 +214,7 @@ with OUT.open("w", encoding="utf-8", newline="") as f:
     w.writeheader()
     w.writerows(rows)
 
-# Also write simple GHL-import-only CSV (4 core columns)
+# Also write simple GHL-import-only CSV (legacy 6 columns)
 SIMPLE = Path(__file__).parent / "ghl-batch2-simple-import.csv"
 with SIMPLE.open("w", encoding="utf-8", newline="") as f:
     w = csv.writer(f, quoting=csv.QUOTE_ALL)
@@ -222,8 +222,33 @@ with SIMPLE.open("w", encoding="utf-8", newline="") as f:
     for r in rows:
         w.writerow([r["scheduled_date"], r["scheduled_time"], r["platform"], r["caption"], r["image_url"], r["first_comment"]])
 
-print(f"wrote {OUT} ({len(rows)} rows)")
-print(f"wrote {SIMPLE} (simple GHL format)")
-print(f"\nposts: {len(POSTS)} | platforms: {len(PLATFORMS)} | total rows: {len(rows)}")
-print("\nschedule: 20 days starting", START)
-print("\nreplace [GHL_CDN_URL] after uploading PNGs to GHL Media Library.")
+# =========================================================================
+# NATIVE GHL CSV — matches GHL_SAMPLE_TEMPLATE.csv exactly
+# Cols: postAtSpecificTime (YYYY-MM-DD HH:mm:ss), content, link (OGmetaUrl),
+#       imageUrls, gifUrl, videoUrls
+# One row per post. GHL UI picks channels at import time.
+# Using Instagram caption (richest hashtag set) as universal content.
+# =========================================================================
+NATIVE = Path(__file__).parent / "ghl-batch2-NATIVE-GHL.csv"
+POST_TIME = "18:00:00"  # 6 PM — best engagement window all platforms
+LINK_OG = "https://skynetjoe.com"
+
+with NATIVE.open("w", encoding="utf-8", newline="") as f:
+    w = csv.writer(f, quoting=csv.QUOTE_ALL)
+    w.writerow(["postAtSpecificTime (YYYY-MM-DD HH:mm:ss)","content","link (OGmetaUrl)","imageUrls","gifUrl","videoUrls"])
+    for i, post in enumerate(POSTS):
+        pid, slug, hook, body, q, tags, cat = post
+        day = START + timedelta(days=i)
+        dt = f"{day.strftime('%Y-%m-%d')} {POST_TIME}"
+        image_file = f"waseem-viral-{slug}.png"
+        image_url = f"{CDN_PLACEHOLDER}/{image_file}"
+        caption = build_caption("Instagram", post)
+        link = f"{LINK_OG}/?utm_source=ghl&utm_medium=social&utm_campaign=batch2&utm_content={slug}"
+        w.writerow([dt, caption, link, image_url, "", ""])
+
+print(f"wrote {OUT} ({len(rows)} rows) — advanced multi-platform")
+print(f"wrote {SIMPLE} ({len(rows)} rows) — legacy simple format")
+print(f"wrote {NATIVE} ({len(POSTS)} rows) -- NATIVE GHL FORMAT (matches SAMPLE)")
+print(f"\nposts: {len(POSTS)} | platforms in advanced: {len(PLATFORMS)}")
+print(f"schedule: {START} to {START + timedelta(days=len(POSTS)-1)}")
+print(f"github cdn: {CDN_PLACEHOLDER}")
