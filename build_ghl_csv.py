@@ -8,7 +8,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 OUT = Path(__file__).parent / "ghl-batch2-20posts.csv"
-CDN_PLACEHOLDER = "[GHL_CDN_URL]"  # replace after media upload
+CDN_PLACEHOLDER = "https://raw.githubusercontent.com/waseemnasir2k26/skynetjoe-viral-batch2/master/png"
 
 NOTE = "🤖 Designed by Claude Code · auto-published via GoHighLevel + n8n. Zero manual clicks."
 BRAND = "#Skynetlabs #Waseemnasir #NomadCEO"
@@ -184,7 +184,7 @@ for i, post in enumerate(POSTS):
     pid, slug, hook, body, q, tags, cat = post
     day = START + timedelta(days=i)
     date_str = day.strftime("%m/%d/%Y")
-    image_file = f"{slug}.png"
+    image_file = f"waseem-viral-{slug}.png"
     image_url = f"{CDN_PLACEHOLDER}/{image_file}"
     for platform, cfg in PLATFORMS.items():
         rows.append({
